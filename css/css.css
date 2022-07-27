@@ -171,3 +171,12 @@ input.w-90 {
 input.w-100 {
 	width: 100%;
 }
+
+.page>a {
+	color: #0CF;
+	text-decoration: none;
+}
+
+.nowPage {
+	font-size: 1.5rem;
+}
