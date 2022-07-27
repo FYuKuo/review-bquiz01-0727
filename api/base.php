@@ -277,4 +277,10 @@ function dd($array){
 if(isset($do)) {
     $STR = new STR($do);
 }
+
+function alert($str){
+    echo "<script>";
+    echo "alert($str)";
+    echo "</script>";
+}
 ?>

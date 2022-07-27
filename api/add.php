@@ -31,24 +31,28 @@ switch ($table) {
 
     break;
 
-    case 'total' :
-
-    break;
-
-    case 'bottom' :
-
-    break;
-
     case 'admin' :
+
+        if($_POST['pw'] == $_POST['pwch']){
+            
+            $data['acc'] = $_POST['acc'];
+            $data['pw'] = $_POST['pw'];
+        }else{
+            alert('請重新確認密碼');
+        }
+
 
     break;
 
     case 'menu' :
-
+        $data['href'] = $_POST['href'];
+        $data['sh'] = 1;
+        $data['parent'] = 0;
     break;
     }
 
 $DB->save($data);
 
-to("../back.php?do=$table");
+header("refresh:0,url='../back.php?do=$table'");
+// to("../back.php?do=$table");
 ?>
