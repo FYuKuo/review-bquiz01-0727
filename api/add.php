@@ -51,7 +51,11 @@ switch ($table) {
     break;
     }
 
-$DB->save($data);
+if(!empty($data)){
+    $DB->save($data);
+
+}
+
 
 header("refresh:0,url='../back.php?do=$table'");
 // to("../back.php?do=$table");

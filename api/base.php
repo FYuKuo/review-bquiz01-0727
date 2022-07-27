@@ -280,7 +280,7 @@ if(isset($do)) {
 
 function alert($str){
     echo "<script>";
-    echo "alert($str)";
+    echo "alert('$str')";
     echo "</script>";
 }
 ?>
