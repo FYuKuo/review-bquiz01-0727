@@ -17,15 +17,20 @@ foreach ($_POST['id'] as $key => $id) {
         switch ($table) {
             case 'title':
                 $data['text'] = $_POST['text']["$key"];
-                $data['sh'] = ($_POST['sh'] == $id)?1:0;
-        
+                $data['sh'] = ((isset($_POST['sh'])) && $_POST['sh'] == $id)?1:0;
+                
             break;
-        
+                
             case 'ad' :
+                $data['text'] = $_POST['text']["$key"];
+                $data['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
+
+            break;
+
             case 'mvim' :
             case 'image' :
             case 'news' :    
-                $data['sh'] = ($_POST['sh']["$key"] == $id)?1:0;
+                $data['sh'] = (isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
 
             break;
         
@@ -46,5 +51,4 @@ foreach ($_POST['id'] as $key => $id) {
 
 
 to("../back.php?do=$table");
-// 
 ?>
