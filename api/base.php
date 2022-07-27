@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Taipei');
-// session_start();
+session_start();
 
 class DB {
     protected $dsn = 'mysql:host=localhost;charset=utf8;dbname=db15-0727';
@@ -283,4 +283,14 @@ function alert($str){
     echo "alert('$str')";
     echo "</script>";
 }
+
+$Title = new DB('title');
+$Ad = new DB('ad');
+$Mvim = new DB('mvim');
+$Image = new DB('image');
+$Total = new DB('total');
+$Bottom = new DB('bottom');
+$News = new DB('news');
+$Admin = new DB('admin');
+$Menu = new DB('menu');
 ?>

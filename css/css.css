@@ -180,3 +180,16 @@ input.w-100,textarea.w-100 {
 .nowPage {
 	font-size: 1.5rem;
 }
+
+.menu_out {
+	position: relative;
+}
+
+.mw {
+	z-index: 100;
+	position: absolute;
+	right: -150px;
+	width: 100%;
+	top: 10px;
+	display: none;
+}
