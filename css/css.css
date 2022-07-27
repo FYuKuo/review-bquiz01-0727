@@ -168,7 +168,7 @@ input.w-90 {
 	width: 90%;
 }
 
-input.w-100 {
+input.w-100,textarea.w-100 {
 	width: 100%;
 }
 
