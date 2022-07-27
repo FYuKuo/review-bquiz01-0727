@@ -4,10 +4,9 @@
         <table width="100%" class="cent">
             <tbody>
                 <tr class="yel">
-                    <td width="45%"><?=$STR->img?></td>
-                    <td width="23%"><?=$STR->text?></td>
-                    <td width="7%">顯示</td>
-                    <td width="7%">刪除</td>
+                    <td width="60%"><?=$STR->img?></td>
+                    <td width="10%">顯示</td>
+                    <td width="10%">刪除</td>
                     <td></td>
                 </tr>
 
@@ -18,13 +17,10 @@
                 ?>
                     <tr>
                         <td>
-                            <img src="./img/<?=$row['img']?>" alt="" style="width: 300px; height:30px">
+                            <img src="./img/<?=$row['img']?>" alt="" style="width: 100px; height:68px">
                         </td>
                         <td>
-                            <input type="text" name="text[]" value="<?=$row['text']?>">
-                        </td>
-                        <td>
-                            <input type="radio" name="sh" value="<?=$row['id']?>" <?=($row['sh'] == 1)?'checked':''?>>
+                            <input type="checkbox" name="sh[]" value="<?=$row['id']?>" <?=($row['sh'] == 1)?'checked':''?>>
                         </td>
                         <td>
                             <input type="checkbox" name="del[]" value="<?=$row['id']?>">

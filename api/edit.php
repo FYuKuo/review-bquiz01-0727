@@ -22,26 +22,11 @@ foreach ($_POST['id'] as $key => $id) {
             break;
         
             case 'ad' :
-        
-        
             case 'mvim' :
-        
-            break;
-        
             case 'image' :
-        
-            break;
-        
-            case 'total' :
-        
-            break;
-        
-            case 'bottom' :
-        
-            break;
-        
-            case 'news' :
-        
+            case 'news' :    
+                $data['sh'] = ($_POST['sh']["$key"] == $id)?1:0;
+
             break;
         
             case 'admin' :
