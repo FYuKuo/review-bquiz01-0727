@@ -84,13 +84,13 @@ class DB {
 
         foreach ($data as $key => $value) {
 
-            if($data['id'] != $value) {
+            if($key != 'id') {
                 $tmp[] = "`$key` = '$value'";
 
             }
         }
 
-        $sql = "UPDATE `$this->table` SET " .join('AND',$tmp). " WHERE `id` = '{$data['id']}'";
+        $sql = "UPDATE `$this->table` SET " .join(',',$tmp). " WHERE `id` = '{$data['id']}'";
 
         }else{
         //儲存

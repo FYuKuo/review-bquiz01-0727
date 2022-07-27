@@ -6,16 +6,17 @@ $DB = new DB($table);
 
 foreach ($_POST['id'] as $key => $id) {
     
-    if(isset($_POST['del'])){
-        if(in_array($id,$_POST['del'])){
+    if(isset($_POST['del']) && in_array($id,$_POST['del'])){
+
             $DB->del($id);
-        }
+            // echo $id;
+
     }else{
         $data = $DB->find($id);
 
         switch ($table) {
             case 'title':
-                $data['text'] = $_POST['text'][$key];
+                $data['text'] = $_POST['text']["$key"];
                 $data['sh'] = ($_POST['sh'] == $id)?1:0;
         
             break;
@@ -52,7 +53,7 @@ foreach ($_POST['id'] as $key => $id) {
             break;
             }
     
-            dd($data);
+            // dd($data);
             $DB->save($data);
     }
 
