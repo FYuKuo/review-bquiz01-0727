@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Taipei');
-session_start();
+// session_start();
 
 class DB {
     protected $dsn = 'mysql:host=localhost;charset=utf8;dbname=db15-0727';
@@ -83,7 +83,11 @@ class DB {
         // 更新
 
         foreach ($data as $key => $value) {
-            $tmp[] = "`$key` = '$value'";
+
+            if($data['id'] != $value) {
+                $tmp[] = "`$key` = '$value'";
+
+            }
         }
 
         $sql = "UPDATE `$this->table` SET " .join('AND',$tmp). " WHERE `id` = '{$data['id']}'";
@@ -269,4 +273,8 @@ function dd($array){
     echo "</pre>";
 }
 
+
+if(isset($do)) {
+    $STR = new STR($do);
+}
 ?>
