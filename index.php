@@ -2,10 +2,10 @@
 $do = ($_GET['do']) ?? 'main';
 include('./api/base.php');
 
-if(empty($_SESSION['frist'])){
+if (empty($_SESSION['frist'])) {
     $_SESSION['frist'] = 1;
     $total = $Total->find(1);
-    $total['text'] = $total['text']+1;
+    $total['text'] = $total['text'] + 1;
     $Total->save($total);
 }
 ?>
@@ -29,7 +29,6 @@ if(empty($_SESSION['frist'])){
             <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
         </div>
     </div>
-    <iframe style="display:none;" name="back" id="back"></iframe>
     <div id="main">
 
         <?php
@@ -52,18 +51,18 @@ if(empty($_SESSION['frist'])){
                             </a>
 
                             <div class="mw">
-                            <?php
-                            foreach ($Menu->all(['sh' => 1, 'parent' => $menu['id']]) as $key => $child) {
-                            ?>
-                                <a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $child['href'] ?>">
-                                    <div class="mainmu2">
-                                        <?= $child['text'] ?>
-                                    </div>
-                                </a>
+                                <?php
+                                foreach ($Menu->all(['sh' => 1, 'parent' => $menu['id']]) as $key => $child) {
+                                ?>
+                                    <a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $child['href'] ?>">
+                                        <div class="mainmu2">
+                                            <?= $child['text'] ?>
+                                        </div>
+                                    </a>
 
-                            <?php
-                            }
-                            ?>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
 
@@ -92,19 +91,54 @@ if(empty($_SESSION['frist'])){
 
             <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 <!--右邊-->
-                <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=admin')">管理登入</button>
+                <?php
+                if (isset($_SESSION['user'])) {
+                ?>
+                    <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="location.href='./back.php'">
+                        後台管理
+                    </button>
+                <?php
+                } else {
+                ?>
+                    <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">
+                        管理登入
+                    </button>
+                <?php
+                }
+                ?>
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
+                    <br>
+
+                    <div class="cent" onclick="pp(1)">
+                        <img src="./icon/up.jpg" alt="">
+                    </div>
+                    <br>
+                    <?php
+                    foreach ($Image->all(['sh' => 1]) as $key => $img) {
+                    ?>
+                        <div class="im cent" id="ssaa<?= $key ?>">
+                            <img src="./img/<?= $img['img'] ?>" alt="" style="width: 150px;height:103px">
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <br>
+
+                    <div class="cent" onclick="pp(2)">
+                        <img src="./icon/dn.jpg" alt="">
+                    </div>
+
                     <script>
                         var nowpage = 0,
-                            num = 0;
+                            num = <?= count($Image->all(['sh' => 1])) ?>;
 
                         function pp(x) {
                             var s, t;
                             if (x == 1 && nowpage - 1 >= 0) {
                                 nowpage--;
                             }
-                            if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+                            if (x == 2 && (nowpage + 3) < num) {
                                 nowpage++;
                             }
                             $(".im").hide()
@@ -134,7 +168,7 @@ if(empty($_SESSION['frist'])){
                 $(this).parent().next().show()
 
 
-                $('.mw').mouseover(function(){
+                $('.mw').mouseover(function() {
                     $(this).show()
                 })
             }
@@ -146,9 +180,9 @@ if(empty($_SESSION['frist'])){
             }
         )
 
-        $('.mw').mouseout(function(){
-                    $(this).hide()
-                })
+        $('.mw').mouseout(function() {
+            $(this).hide()
+        })
     });
 </Script>
 
